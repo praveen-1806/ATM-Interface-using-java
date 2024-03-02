@@ -1,0 +1,80 @@
+import java.util.Scanner;
+class Main
+{
+static Scanner sc=new Scanner (System. in);
+static int db_atm_pin=1234;
+static long db_contact=9876543210L;
+static int db_code=0000;
+
+public static void main(String[] args) throws Exception
+{
+
+System.out.println("\t\t\tSelect the Input ");
+System.out.println("1.Change Pin\n2.Update Contact\n3.Details Of Account Holder");
+//After Displaying the Above msg now get ready to take the input from the user
+int button=sc.nextInt();//<---1 or 2 or Abn
+
+if(button==1)
+{
+//Change the Pin
+//Directly dont change the pin do verification
+System.out.println("\t\t\tEnter the Contact");
+long user_enter_contact=sc.nextLong();//user entered contact will be stored
+if(user_enter_contact==db_contact)
+{
+//Phone no matching
+//Gen OTP
+System.out.println("\t\t\tEnter the OTP");
+Thread. sleep ( 2000);
+int sys_otp=(int) (Math.random() *9999+9999);
+System.out.println(sys_otp);
+System.out.println("Enter the OTP");
+int user_enter_otp=sc.nextInt();//<--user is Entering the OTP
+if(user_enter_otp==sys_otp)
+{
+//Otp is Matching
+System.out.println("\t\t\tPlease Enter the New Pin");
+db_atm_pin=sc.nextInt();
+System.out.println("\t\t\tpin Modified Succesfully ：" +db_atm_pin);
+}
+else
+{//OTP NOt Matching
+System.out.println("verification failed");
+}
+}
+else
+{
+//Not Matching
+System.out.println("verification failed");
+}
+}
+
+
+if(button==2)
+{
+//Update the Contact
+System.out.println("enter the old contact");
+Long contact_number=sc.nextLong();
+if(contact_number==db_contact){
+System.out.println("Enter the Secret Code");
+int secret_code=sc.nextInt();
+if(secret_code==db_code){
+System.out.println("Enter the new number");
+db_contact=sc.nextLong();
+System.out.println("number changed Succesfully!!!");
+}
+}
+}
+
+if(button==3)
+{
+System.out.println("Pin :"+db_atm_pin);
+System.out.println("Contact :"+db_contact);
+}
+
+if(button>3 || button<1)
+{
+//Test eng is Testing
+}
+}
+}
